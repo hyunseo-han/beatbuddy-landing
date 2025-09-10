@@ -3,33 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebP 반응형 이미지</title>
+    <title>BeatBuddy</title>
     <style>
+      :root {
+        /* 393px 디자인에서 78px → 퍼센트 비율 */
+        --badge-percent: calc(78 / 393 * 100%);
+        --badge-max: 119.08px; /* 컨테이너 600px일 때 상한 */
+        --badge-min: 0px; /* 필요하면 56px 등으로 하한 설정 */
+      }
+
+      html,
       body {
         margin: 0;
-        font-family: sans-serif;
-        background: #f9f9f9;
+        padding: 0;
       }
 
       .image-wrap {
-        max-width: 600px; /* 최대 크기 제한 */
-        margin: 0 auto; /* 가운데 정렬 */
+        max-width: 600px;
+        margin: 0 auto;
       }
-
       .image-wrap img {
         display: block;
-        width: 100%; /* 컨테이너 폭에 맞춰 반응형 */
-        height: auto; /* 비율 유지 */
+        width: 100%;
+        height: auto;
+      }
+
+      .cta {
+        background: #000;
+        text-align: center;
+      }
+      .badges {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px 15%; /* 가로 간격 = 컨테이너 폭의 15% */
+        padding: 12px 0 20px;
+      }
+
+      /* 핵심: 링크 래퍼가 반응형 너비를 갖고 */
+      .badges a {
+        display: inline-flex;
+        width: clamp(var(--badge-min), var(--badge-percent), var(--badge-max));
+      }
+      /* 이미지는 래퍼 너비에 맞춰 100%로 따라가기 */
+      .badges img {
+        width: 100%;
+        height: auto;
+        display: block;
       }
     </style>
   </head>
   <body>
     <div class="image-wrap">
       <img
-        src="qrscan.webp"
-        alt="페이지 롱이미지"
-        width="786"
-        height="11882"
+        src="qrscan_top.webp"
+        alt="페이지 top이미지"
+        loading="lazy"
+        decoding="async"
+      />
+
+      <section class="cta" id="download" role="region" aria-label="앱 다운로드">
+        <div class="badges">
+          <a
+            href="https://apps.apple.com/kr/app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="App Store에서 다운로드"
+          >
+            <img src="ios.png" alt="App Store" />
+          </a>
+          <a
+            href="https://play.google.com/store"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google Play에서 다운로드"
+          >
+            <img src="aos.png" alt="Google Play" />
+          </a>
+        </div>
+      </section>
+
+      <img
+        src="qrscan_bottom.webp"
+        alt="페이지 bottom이미지"
         loading="lazy"
         decoding="async"
       />
