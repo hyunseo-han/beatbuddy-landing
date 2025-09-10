@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebP 반응형 이미지</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background: #f9f9f9;
+      }
+
+      .image-wrap {
+        max-width: 600px; /* 최대 크기 제한 */
+        margin: 0 auto; /* 가운데 정렬 */
+      }
+
+      .image-wrap img {
+        display: block;
+        width: 100%; /* 컨테이너 폭에 맞춰 반응형 */
+        height: auto; /* 비율 유지 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-wrap">
+      <img
+        src="qrscan.webp"
+        alt="페이지 롱이미지"
+        width="786"
+        height="11882"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </body>
+</html>
